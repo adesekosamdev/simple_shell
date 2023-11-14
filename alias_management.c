@@ -16,7 +16,7 @@ int print_alias(program_data *data, char *alias)
 	{
 		len_alias = _strlen(alias);
 		i = 0;
-		while ( data->alias_list[i])
+		while (data->alias_list[i])
 		{
 			if (!alias || (_strcmp(data->alias_list[i], alias, len_alias)
 				&&	data->alias_list[i][len_alias] == '='))
@@ -57,7 +57,7 @@ char *get_alias(program_data *data, char *name)
 	len_alias = _strlen(name);
 
 	i = 0;
-	while ( data->alias_list[i])
+	while (data->alias_list[i])
 	{
 		if (_strcmp(name, data->alias_list[i], len_alias) &&
 			data->alias_list[i][len_alias] == '=')
