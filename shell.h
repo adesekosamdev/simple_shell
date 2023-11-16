@@ -58,7 +58,7 @@
 
 #define HELP_MSG "help=\n"\
 "help:\thelp [BUILTIN_NAME]\n\n"\
-"	Display information about builtin commands.\n\n"\
+"	Displays information about builtin commands.\n\n"\
 "	Displays brief summaries of builtin commands.  If BUILTIN_NAME is\n"\
 "	specified, gives detailed help on all commands matching BUILTIN_NAME,\n"\
 "	otherwise the list of help topics is printed BUILTIN_NAME list.\n"\

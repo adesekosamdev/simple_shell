@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * print_alias - print aliases
+ * print_alias - prints aliases
  * @data: structure for the program's data
  * @alias: name of the alias to be printed
  * Return: zero if success, or other number if declared in the arguments

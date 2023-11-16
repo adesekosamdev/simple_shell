@@ -36,7 +36,6 @@ void expand_vars(program_data *data)
 
 	if (data->input_line == NULL)
 		return;
-
 	add_buffer(line, data->input_line);
 	for (i = 0; line[i]; i++)
 		if (line[i] == '#')

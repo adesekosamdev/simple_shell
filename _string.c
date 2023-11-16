@@ -29,7 +29,7 @@ int _strlen(char *string)
 
 int _strcmp(char *string1, char *string2, int number)
 {
-	int iterator;
+	int checker;
 
 	if (string1 == NULL && string2 == NULL)
 		return (1);
@@ -41,18 +41,18 @@ int _strcmp(char *string1, char *string2, int number)
 	{
 		if (_strlen(string1) != _strlen(string2))
 			return (0);
-		for (iterator = 0; string1[iterator]; iterator++)
+		for (checker = 0; string1[checker]; checker++)
 		{
-			if (string1[iterator] != string2[iterator])
+			if (string1[checker] != string2[checker])
 				return (0);
 		}
 		return (1);
 	}
 	else /* if there is a number of chars to be compared */
 	{
-		for (iterator = 0; iterator < number ; iterator++)
+		for (checker = 0; checker < number ; checker++)
 		{
-			if (string1[iterator] != string2[iterator])
+			if (string1[checker] != string2[checker])
 			return (0);
 		}
 		return (1);
@@ -67,7 +67,7 @@ int _strcmp(char *string1, char *string2, int number)
 
 char *_strdup(char *string)
 {
-	char *result;
+	char *duplicate;
 	int length, i;
 
 	if (string == NULL)
@@ -75,9 +75,9 @@ char *_strdup(char *string)
 
 	length = _strlen(string) + 1;
 
-	result = malloc(sizeof(char) * length);
+	duplicate = malloc(sizeof(char) * length);
 
-	if (result == NULL)
+	if (duplicate == NULL)
 	{
 		errno = ENOMEM;
 		perror("Error");
@@ -85,10 +85,9 @@ char *_strdup(char *string)
 	}
 	for (i = 0; i < length ; i++)
 	{
-		result[i] = string[i];
+		duplicate[i] = string[i];
 	}
-
-	return (result);
+	return (duplicate);
 }
 
 /**
@@ -102,27 +101,26 @@ void str_rev(char *string)
 {
 
 	int i = 0, length = _strlen(string) - 1;
-	char hold;
+	char temp;
 
 	while (i < length)
 	{
-		hold = string[i];
+		temp = string[i];
 		string[i++] = string[length];
-		string[length--] = hold;
+		string[length--] = temp;
 	}
 }
 
 /**
  * str_concat - concatenates two strings.
- * @string1: String to be concatenated
- * @string2: String to be concatenated
- *
- * Return: pointer to the array
+ * @string1: String to be concatenated.
+ * @string2: String to be concatenated.
+ * Return: a pointer to the array
  */
 
 char *str_concat(char *string1, char *string2)
 {
-	char *result;
+	char *duplicate;
 	int length1 = 0, length2 = 0;
 
 	if (string1 == NULL)
@@ -133,26 +131,23 @@ char *str_concat(char *string1, char *string2)
 		string2 = "";
 	length2 = _strlen(string2);
 
-	result = malloc(sizeof(char) * (length1 + length2 + 1));
-	if (result == NULL)
+	duplicate = malloc(sizeof(char) * (length1 + length2 + 1));
+	if (duplicate == NULL)
 	{
 		errno = ENOMEM;
 		perror("Error");
 		return (NULL);
 	}
 
-	/* copy of string1 */
 	for (length1 = 0; string1[length1] != '\0'; length1++)
-		result[length1] = string1[length1];
+		duplicate[length1] = string1[length1];
 	free(string1);
 
-	/* copy of string2 */
 	for (length2 = 0; string2[length2] != '\0'; length2++)
 	{
-		result[length1] = string2[length2];
+		duplicate[length1] = string2[length2];
 		length1++;
 	}
-
-	result[length1] = '\0';
-	return (result);
+	duplicate[length1] = '\0';
+	return (duplicate);
 }

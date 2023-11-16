@@ -16,10 +16,12 @@ int _getline(program_data *data)
 	if (!array_commands[0] || (array_operators[0] == '&' && errno != 0) ||
 		(array_operators[0] == '|' && errno == 0))
 	{
-		for (i = 0; array_commands[i]; i++)
+		i = 0;
+		while (array_commands[i])
 		{
 			free(array_commands[i]);
 			array_commands[i] = NULL;
+			i++;
 		}
 
 		numof_bytes_read = read(data->file_desc_cmd, &buffer, BUFFER_SIZE - 1);
@@ -34,11 +36,12 @@ int _getline(program_data *data)
 	}
 
 	data->input_line = array_commands[0];
-	for (i = 0; array_commands[i]; i++)
+	i = 0;
+	while (array_commands[i])
 	{
 		array_operators[i] = array_operators[i + 1];
 		array_commands[i] = array_commands[i + 1];
+		i++;
 	}
-
 	return (_strlen(data->input_line));
 }

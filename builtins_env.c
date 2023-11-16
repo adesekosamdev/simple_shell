@@ -16,7 +16,8 @@ int builtin_env(program_data *data)
 		print_environ(data);
 	else
 	{
-		for (i = 0; data->tokens[1][i]; i++)
+		i = 0;
+		while (data->tokens[1][i])
 		{
 			if (data->tokens[1][i] == '=')
 			{
@@ -37,6 +38,7 @@ int builtin_env(program_data *data)
 				return (0);
 			}
 			cpname[i] = data->tokens[1][i];
+			i++;
 		}
 		errno = 2;
 		perror(data->first_cmd);
@@ -61,7 +63,6 @@ int set_builtin_env(program_data *data)
 		perror(data->first_cmd);
 		return (5);
 	}
-
 	set_env_key(data->tokens[1], data->tokens[2], data);
 
 	return (0);

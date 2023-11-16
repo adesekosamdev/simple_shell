@@ -19,8 +19,8 @@ int main(int argc, char *argv[], char *env[])
 	signal(SIGINT, ctrl_c_handler);
 
 	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && argc == 1)
-	{/* We are in the terminal, interactive mode */
-		errno = 2;/*???????*/
+	{/* Checks that we are in the terminal, interactive mode */
+		errno = 2;
 		prompt = PROMPT_WORD;
 	}
 	errno = 0;
